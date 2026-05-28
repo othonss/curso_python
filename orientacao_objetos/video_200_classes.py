@@ -1,13 +1,10 @@
 class Pessoa:
-    ...
+    def __init__(self, nome, sobrenome):
+        self.nome = nome
+        self.sobrenome = sobrenome
 
-p1 = Pessoa()
-p1.nome = 'Othon'
-p1.sobrenome = 'Santos'
-
-p2 = Pessoa()
-p2.nome = 'Thais'
-p2.sobrenome = 'Santos'
+p1 = Pessoa('Othon', 'Santos')
+p2 = Pessoa('Thais', 'Santos')
 
 print(p1.nome)
 print(p1.sobrenome)
