@@ -1,6 +1,27 @@
 import subprocess
-lista_tarefas = []
+import json
+
+def ler(tarefas, caminho_arquivo):
+    dados = []
+    try:
+        with open(caminho_arquivo, 'r', encoding='utf-8') as arquivo:
+            dados = json.load(arquivo)
+    except FileNotFoundError:
+        print('Arquivo não existe')
+        salvar(tarefas, caminho_arquivo)
+    return dados
+
+def salvar(tarefas, caminho_arquivo):
+    dados = tarefas
+    with open(caminho_arquivo, 'w', encoding='utf-8') as arquivo:
+        dados = json.dump(tarefas, arquivo, indent=2, ensure_ascii=False)
+    return dados
+
+
+CAMINHO_ARQUIVO = 'video197.json'
+lista_tarefas = ler([], CAMINHO_ARQUIVO)
 lixeira_tarefas = []
+
 
 while True:
     print("\nAdicione uma tarefa ou use os comandos: \n Listar - para mostrar as tarefas \n Desfazer - para desfazer a última tarefa \n Refazer - para refazer a última tarefa desfeita \n Limpar - para limpar a tela \n Sair - para sair do programa\n")
@@ -37,3 +58,5 @@ while True:
             lista_tarefas.append(acao)
         else:
             print('Você não digitou uma tarefa ou comando.')
+    
+    salvar(lista_tarefas, CAMINHO_ARQUIVO)
