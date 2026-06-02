@@ -1,3 +1,4 @@
-import uma_linha
+#import uma_linha
+import varinhas_linhas
 
-help(uma_linha)
+help(varinhas_linhas)
